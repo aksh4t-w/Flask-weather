@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<title>WEATHER APP</title>
+</head>
+<body>
+	<!-- As a heading -->
+	<nav class="navbar navbar-dark bg-dark">
+	  <span class="navbar-brand mb-0 h1">Weather</span>
+	</nav>	
+
+	<section class="hero is-primary">
+		<div class="jumbotron">
+		  <h1 class="display-4">Weather App</h1>
+			  <p class="lead">This is a simple weather finding app, just type the name of a city in the search field and click on Show Weather to display the weather of that city. </p>
+		  <hr class="my-4">
+		  <p>It uses an api from openweathermap to display the weather of the selected city.</p>
+		  
+		<form class="form-inline" method="POST">
+		  <input class="form-control mr-sm-2" type="search" placeholder="City Name" name="city">
+		  <button class="btn btn-primary my-2 my-sm-0" type="submit">Show Weather</button>
+		</form>	
+	    </div>
+	</section>
+	
+	<section class = "section">
+		<div class="col d-flex justify-content-center">
+			{% for weather in weather_data %}
+				<div class="card " style="width: 25rem;">
+				  <div class="card-body">
+					<div class="media">
+					  <img class="mr-2" src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt=""/>
+					  <div class="media-body">
+					    <h5 class="mt-0">{{ weather.city }}</h5>
+					    <h6 class="card-subtitle mb-2 text-muted">{{ weather.temperature }}</h6><br>
+		 			    <p class="card-subtitle">{{ weather.description }}</p>
+					  </div>
+					</div>			  	
+				  </div>
+				</div><br>
+			{% endfor %}
+		</div>
+	</section>
+
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+</body>
+</html>
